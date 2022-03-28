@@ -54,13 +54,6 @@ public class POOLCONEXIONES {
                 }
             } while (respuesta == false);
 
-        
-
-        if (!servidor.equals("192.168.1.89")) {
-            PRINCIPAL.txtEstado.setVisible(false);
-        } else {
-            PRINCIPAL.txtEstado.setVisible(true);
-        }
         intento = 0;
         PRINCIPAL.dataSource=basicDataSource;
         return basicDataSource;
