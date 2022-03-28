@@ -68,13 +68,7 @@ public class POOLCONEXIONES {
 
     public void leerArchivo() {
         String ruta = null;
-
-        if (intento % 2 == 0) {
-            ruta = (new File("")).getAbsolutePath() + "\\archivos\\conexion2.csi";
-        } else {
-            ruta = (new File("")).getAbsolutePath() + "\\archivos\\conexion.csi";
-
-        }
+        ruta = (new File("")).getAbsolutePath() + "\\archivos\\conexion.csi";
 
         File archivo = null;
         FileReader fr = null;
