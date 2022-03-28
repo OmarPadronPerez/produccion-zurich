@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e0a3b709-03c4-4a7b-a158-33c3103794f2">
+	<property name="ireport.zoom" value="1.2100000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="titulo" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\sistemas\\Documents\\NetBeansProjects\\ZURICH2\\src\\REPORTESPDF\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="componente" class="java.lang.String"/>
+	<field name="lista" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="189" height="80" uuid="e6bc65ba-32a2-4617-9c9b-f903835210ab"/>
+				<imageExpression><![CDATA["archivos\\imagenes\\LOGO.png"]]></imageExpression>
+			</image>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="472" y="0" width="100" height="20" uuid="207add9b-de26-4827-9859-2f4a427c6e81"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="189" y="0" width="283" height="20" uuid="55671c5b-b112-4f48-ad17-b43a14c2fe21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ZURICH MUEBLERIA SA.CV]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="189" y="40" width="283" height="20" isRemoveLineWhenBlank="true" uuid="fee088b2-043c-47bf-aa97-b69ffc828fc1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{titulo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="189" y="20" width="283" height="20" uuid="b1afad55-1c8e-4e71-aa7a-629c798ce3a0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Material necesario para produccion]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="189" y="60" width="283" height="20" uuid="ab9a0e46-c2bd-4629-97d3-0efa812a0a61"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{componente}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="572" height="125" uuid="e460df68-e3dd-4aa2-97cf-a8a4cbd3667c"/>
+				<dataSourceExpression><![CDATA[$F{lista}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[new File("archivos\\reportesPdf\\MATERIALREQUERIDOPDF_subreport1.jasper").getAbsolutePath()]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="452" y="0" width="80" height="22" uuid="78a4e559-65e9-4b71-94d6-eef98b00caa9"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="532" y="0" width="40" height="22" uuid="dfccbc50-6870-4c95-8e58-94631994b81f"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="0" y="0" width="100" height="22" uuid="13905215-28c0-4358-b409-5ee9f990b319"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

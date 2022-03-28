@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="764" leftMargin="14" rightMargin="14" topMargin="14" bottomMargin="14" uuid="041e4337-90a4-461a-8bf7-c21335755937">
+	<property name="ireport.zoom" value="1.1000000000000005"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\sistemas\\Documents\\NetBeansProjects\\ZURICH2\\src\\REPORTESPDF\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tipo" class="java.lang.String"/>
+	<parameter name="inicio" class="java.lang.String"/>
+	<parameter name="fin" class="java.lang.String"/>
+	<parameter name="clave" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="lista" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="191" height="80" uuid="4cf70ca5-5619-418c-b553-503b09c5f83a"/>
+				<imageExpression><![CDATA["archivos\\imagenes\\LOGO.png"]]></imageExpression>
+			</image>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="664" y="0" width="100" height="20" uuid="8c89c342-5b37-41d2-b596-a909e5016f4f"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="623" y="0" width="41" height="20" uuid="3fc54156-74d4-4db5-af9b-ba96baae23ad"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="191" y="25" width="432" height="23" uuid="2a6af54d-9464-4484-afcb-71638a47e4b6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Resumen de pedidos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="191" y="60" width="52" height="20" uuid="58c28615-383b-40ec-85df-bba53d239604"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Periodo de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="191" y="0" width="432" height="25" uuid="42f3cdcd-ab8f-4bf3-af43-d86313b6ec90"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ZURICH MUEBLES S.A. DE C.V.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="243" y="60" width="68" height="20" uuid="ff5aa9d0-9f6d-4282-912b-2616189dbb6d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{inicio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="311" y="60" width="10" height="20" uuid="c53f3e33-549f-487c-ad1e-c1be2ff6da22"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[al]]></text>
+			</staticText>
+			<textField pattern="">
+				<reportElement x="321" y="60" width="62" height="20" uuid="3adc9f67-5ef6-454d-9e1f-54b9f5e317f8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="421" y="60" width="53" height="20" uuid="c3b7f7d5-58c2-425f-b1ba-316ae01f888b"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{tipo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="474" y="60" width="100" height="20" uuid="bc809334-3e5a-4a37-81d3-7dce88a60f9a"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{clave}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="149">
+			<subreport>
+				<reportElement x="0" y="0" width="764" height="149" uuid="c16f13b8-50ba-4c17-85e3-c7b4b43b3c7f"/>
+				<dataSourceExpression><![CDATA[$F{lista}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[new File("archivos\\reportesPdf\\PDFResumenPedidos_subreport1.jasper").getAbsolutePath()]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="644" y="0" width="80" height="21" uuid="b2989905-b21f-4b21-b47c-7b488f0f78cb"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="724" y="0" width="40" height="21" uuid="6c715b63-4173-48da-b5b7-ff73124f4d12"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f8a6c310-2518-41e1-9b2b-1d03d5e4f024">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idComponente" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[2]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     componentes.`id` AS componentes_id,
+     componentes.`nombre` AS componentes_nombre,
+     componentes.`modelo` AS componentes_modelo,
+     componentes.`medidaX` AS componentes_medidaX,
+     componentes.`medidaY` AS componentes_medidaY,
+     componentes.`medidaZ` AS componentes_medidaZ,
+     componentes.`explosivo` AS componentes_explosivo,
+     componentes.`cortes` AS componentes_cortes,
+     componentes.`actualizacion` AS componentes_actualizacion,
+     componentes.`observaciones` AS componentes_observaciones,
+     componentes.`notas` AS componentes_notas
+FROM
+     `componentes` componentes
+where componentes.`id`=$P{idComponente}]]>
+	</queryString>
+	<field name="componentes_id" class="java.lang.Integer"/>
+	<field name="componentes_nombre" class="java.lang.String"/>
+	<field name="componentes_modelo" class="java.lang.String"/>
+	<field name="componentes_medidaX" class="java.math.BigDecimal"/>
+	<field name="componentes_medidaY" class="java.math.BigDecimal"/>
+	<field name="componentes_medidaZ" class="java.math.BigDecimal"/>
+	<field name="componentes_explosivo" class="java.lang.String"/>
+	<field name="componentes_cortes" class="java.lang.String"/>
+	<field name="componentes_actualizacion" class="java.sql.Date"/>
+	<field name="componentes_observaciones" class="java.lang.String"/>
+	<field name="componentes_notas" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

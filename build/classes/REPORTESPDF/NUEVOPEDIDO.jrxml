@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="612" pageHeight="792" columnWidth="584" leftMargin="14" rightMargin="14" topMargin="14" bottomMargin="14" uuid="3ba196f1-141e-4afa-860d-33b05b9c49b5">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="folio" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     pedidos.`id` AS pedidos_id,
+     pedidos.`folio` AS pedidos_folio,
+     pedidos.`cliente` AS pedidos_cliente,
+     pedidos.`idcomponente` AS pedidos_idcomponente,
+     pedidos.`observaciones` AS pedidos_observaciones,
+     pedidos.`fechaCreacion` AS pedidos_fechaCreacion,
+     pedidos.`fechaEntrega` AS pedidos_fechaEntrega,
+     pedidos.`cantidad` AS pedidos_cantidad,
+     pedidos.`echo` AS pedidos_echo,
+     pedidos.`entregado` AS pedidos_entregado,
+     pedidos.`color` AS pedidos_color,
+     pedidos.`tapizado` AS pedidos_tapizado,
+     pedidos.`prioridad` AS pedidos_prioridad,
+     componentes.`id` AS componentes_id,
+     componentes.`nombre` AS componentes_nombre,
+     componentes.`modelo` AS componentes_modelo,
+     componentes.`medidaX` AS componentes_medidaX,
+     componentes.`medidaY` AS componentes_medidaY,
+     componentes.`medidaZ` AS componentes_medidaZ,
+     componentes.`explosivo` AS componentes_explosivo,
+     componentes.`actualizacion` AS componentes_actualizacion,
+     componentes.`observaciones` AS componentes_observaciones,
+     componentes.`notas` AS componentes_notas,
+     componentes.`prueba` AS componentes_prueba,
+     pedidos.`total` AS pedidos_total
+FROM
+     `componentes` componentes INNER JOIN `pedidos` pedidos ON componentes.`id` = pedidos.`idcomponente`
+WHERE
+     pedidos.`folio` = $P{folio}]]>
+	</queryString>
+	<field name="pedidos_id" class="java.lang.Integer"/>
+	<field name="pedidos_folio" class="java.lang.String"/>
+	<field name="pedidos_cliente" class="java.lang.String"/>
+	<field name="pedidos_idcomponente" class="java.lang.Integer"/>
+	<field name="pedidos_observaciones" class="java.lang.String"/>
+	<field name="pedidos_fechaCreacion" class="java.sql.Date"/>
+	<field name="pedidos_fechaEntrega" class="java.sql.Date"/>
+	<field name="pedidos_cantidad" class="java.lang.Integer"/>
+	<field name="pedidos_echo" class="java.lang.Integer"/>
+	<field name="pedidos_entregado" class="java.lang.Integer"/>
+	<field name="pedidos_color" class="java.lang.String"/>
+	<field name="pedidos_tapizado" class="java.lang.String"/>
+	<field name="pedidos_prioridad" class="java.lang.String"/>
+	<field name="componentes_id" class="java.lang.Integer"/>
+	<field name="componentes_nombre" class="java.lang.String"/>
+	<field name="componentes_modelo" class="java.lang.String"/>
+	<field name="componentes_medidaX" class="java.math.BigDecimal"/>
+	<field name="componentes_medidaY" class="java.math.BigDecimal"/>
+	<field name="componentes_medidaZ" class="java.math.BigDecimal"/>
+	<field name="componentes_explosivo" class="java.lang.String"/>
+	<field name="componentes_actualizacion" class="java.sql.Date"/>
+	<field name="componentes_observaciones" class="java.lang.String"/>
+	<field name="componentes_notas" class="java.lang.String"/>
+	<field name="componentes_prueba" class="java.lang.Boolean"/>
+	<field name="pedidos_total" class="java.math.BigDecimal"/>
+	<variable name="total" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{pedidos_total}]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="81" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="189" height="80" uuid="fc746afd-83eb-4c04-80e3-6ad700068ee5"/>
+				<imageExpression><![CDATA["archivos\\imagenes\\LOGO.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="189" y="0" width="295" height="20" uuid="f1b0c8cd-035a-46f0-85f2-b88f1e9443c3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ZURICH MUEBLERIA SA.CV]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="189" y="20" width="295" height="20" uuid="d3da29ba-c8a4-40ad-a490-e081c4ad2a2b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[HOJA DE PEDIDO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="484" y="20" width="44" height="20" uuid="838f5908-3a22-451b-9aa7-58c9f6a68865"/>
+				<box leftPadding="3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[FOLIO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="528" y="20" width="56" height="20" uuid="e50c6a11-b93c-40bf-9e58-d19282a5b15e"/>
+				<box leftPadding="3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pedidos_folio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="189" y="60" width="109" height="20" uuid="2074c4a6-f817-411e-bb13-f699d2697ada"/>
+				<box leftPadding="3"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[FECHA ENTREGA]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="484" y="0" width="100" height="20" uuid="86d63ea5-4053-44fc-b0cd-85d45c58359f"/>
+				<box leftPadding="3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pedidos_fechaCreacion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="298" y="60" width="100" height="20" uuid="e290b2b4-8402-4f9d-91bc-a9406c96ce4a"/>
+				<box leftPadding="3"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pedidos_fechaEntrega}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="189" y="40" width="48" height="20" uuid="300e3b09-13c4-4b47-a572-3561422576c0"/>
+				<box leftPadding="3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[CLIENTE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="237" y="40" width="247" height="20" uuid="fe34c011-0792-4cc3-bed6-5c3e8394d887"/>
+				<box leftPadding="3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pedidos_cliente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="398" y="60" width="86" height="20" uuid="b4940f4a-9953-4eaf-b261-b8150bec3428"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[PRIORIDAD]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="484" y="60" width="100" height="20" uuid="50fe1c7f-c3d6-4872-b7ae-99c37279504f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pedidos_prioridad}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="584" height="21" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="b1c88a92-8d96-472c-9d5d-f16807a9c109"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="30" height="21" uuid="7306f28e-c9b9-479c-ac71-d6eab39da3b2"/>
+				<box leftPadding="0">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Cant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="0" width="127" height="21" uuid="100273c6-f490-42a4-859d-c42ce1e6d244"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Componente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="0" width="139" height="21" uuid="cb32b013-3a19-4e81-a920-daf0a912efb3"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Modelo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="296" y="0" width="115" height="21" uuid="53a15777-6232-4b1d-b48f-2eb1a9e3b203"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Color]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="411" y="0" width="117" height="21" uuid="5e1b8741-d99d-4fc9-8313-95317ccd5500"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Tapizado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="528" y="0" width="56" height="21" uuid="08108e10-abcc-45b0-b1c5-2d803afae5eb"/>
+				<box leftPadding="0">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[SubTotal]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="46" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="30" height="22" uuid="638e981c-451b-4c86-9ae5-ef87db04c99d"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pedidos_cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="0" width="127" height="22" uuid="a4be7568-431a-41cd-9a91-420254798388"/>
+				<box leftPadding="3" rightPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{componentes_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="157" y="0" width="139" height="22" uuid="4a1b879b-de5a-4a10-baef-7f329a04f252"/>
+				<box leftPadding="3" rightPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{componentes_modelo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="296" y="0" width="115" height="22" uuid="fcd87474-6807-42a5-ab62-90a670d92e9e"/>
+				<box leftPadding="3" rightPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pedidos_color}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="411" y="0" width="117" height="22" uuid="375bd715-8b96-4f7d-8d92-b32619e7190e"/>
+				<box leftPadding="3" rightPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pedidos_tapizado}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="528" y="0" width="56" height="22" uuid="5e25ff71-ef2a-48f5-9a89-fc985eb924c3"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pedidos_total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="22" width="554" height="20" uuid="19d83777-b373-472a-aa47-2e6c9cab1240"/>
+				<box leftPadding="3">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{pedidos_observaciones}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="22" width="30" height="20" uuid="386fd130-6c86-4230-b0ec-3c09b4b7bc3d"/>
+				<box leftPadding="2">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<text><![CDATA[Notas]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="464" y="0" width="80" height="21" uuid="2e0b87fb-2dd8-4134-a987-7f38d13edce0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="544" y="0" width="40" height="21" uuid="ee5a8fa4-82ea-49e4-82f6-d62177b0a4f2"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy h:mm">
+				<reportElement x="0" y="0" width="100" height="21" uuid="7b5eae4a-28b8-4ec0-aed6-10f5569211ff"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="50">
+			<staticText>
+				<reportElement x="496" y="0" width="32" height="20" uuid="93c6d2d4-dea5-44e1-a4e9-564c443eae25"/>
+				<box leftPadding="3" rightPadding="3">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="528" y="0" width="56" height="20" uuid="6647e322-ee4a-4e4d-80ae-6f2a0f84daef"/>
+				<box leftPadding="3" rightPadding="3">
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

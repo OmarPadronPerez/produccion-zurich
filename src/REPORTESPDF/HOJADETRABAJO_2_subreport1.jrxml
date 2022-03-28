@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="HOJADETRABAJO_2_subreport1" language="groovy" pageWidth="584" pageHeight="802" columnWidth="584" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="b80dd55b-d237-4299-8702-1c7146db3a57">
+	<property name="ireport.zoom" value="1.3310000000000013"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idComp" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     materialusadonuevo.`id` AS materialusadonuevo_id,
+     materialusadonuevo.`modelo` AS materialusadonuevo_modelo,
+     materialusadonuevo.`componente` AS materialusadonuevo_componente,
+     materialusadonuevo.`idComponente` AS materialusadonuevo_idComponente,
+     materialusadonuevo.`pieza` AS materialusadonuevo_pieza,
+     materialusadonuevo.`descripcion` AS materialusadonuevo_descripcion,
+     materialusadonuevo.`idMaterial` AS materialusadonuevo_idMaterial,
+     materialusadonuevo.`materialTipo` AS materialusadonuevo_materialTipo,
+     materialusadonuevo.`medX` AS materialusadonuevo_medX,
+     materialusadonuevo.`medY` AS materialusadonuevo_medY,
+     materialusadonuevo.`medZ` AS materialusadonuevo_medZ,
+     materialusadonuevo.`cantidad` AS materialusadonuevo_cantidad,
+     materialusadonuevo.`parte` AS materialusadonuevo_parte,
+     materialusadonuevo.`cnc` AS materialusadonuevo_cnc
+FROM
+     `materialusadonuevo` materialusadonuevo
+WHERE
+     materialusadonuevo.`idComponente` = $P{idComp}
+ AND (materialusadonuevo.`idMaterial` = 'VIDRIO'
+  OR materialusadonuevo.`materialTipo` = 'LUNA')
+ORDER BY
+     materialusadonuevo.`parte` ASC,
+     materialusadonuevo.`pieza` ASC]]>
+	</queryString>
+	<field name="materialusadonuevo_id" class="java.lang.Integer"/>
+	<field name="materialusadonuevo_modelo" class="java.lang.String"/>
+	<field name="materialusadonuevo_componente" class="java.lang.String"/>
+	<field name="materialusadonuevo_idComponente" class="java.lang.Integer"/>
+	<field name="materialusadonuevo_pieza" class="java.lang.String"/>
+	<field name="materialusadonuevo_descripcion" class="java.lang.String"/>
+	<field name="materialusadonuevo_idMaterial" class="java.lang.String"/>
+	<field name="materialusadonuevo_materialTipo" class="java.lang.String"/>
+	<field name="materialusadonuevo_medX" class="java.math.BigDecimal"/>
+	<field name="materialusadonuevo_medY" class="java.math.BigDecimal"/>
+	<field name="materialusadonuevo_medZ" class="java.math.BigDecimal"/>
+	<field name="materialusadonuevo_cantidad" class="java.math.BigDecimal"/>
+	<field name="materialusadonuevo_parte" class="java.lang.String"/>
+	<field name="materialusadonuevo_cnc" class="java.lang.Boolean"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="20">
+			<rectangle>
+				<reportElement x="0" y="0" width="584" height="20" backcolor="#CCCCCC" uuid="dbc3b335-5b8a-4482-8dd6-0f76fb64eaaf"/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="26" height="20" isPrintWhenDetailOverflows="true" uuid="60bbdbe3-8088-48b6-85e5-6c3d19717b63"/>
+				<box leftPadding="3" rightPadding="3">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Can]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="285" y="0" width="179" height="20" isPrintWhenDetailOverflows="true" uuid="580b831e-eb1e-4549-bba7-7c7fe226573c"/>
+				<box leftPadding="3" rightPadding="3">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="175" y="0" width="110" height="20" isPrintWhenDetailOverflows="true" uuid="47f563b6-82d0-45bc-8cf3-9704dad43a81"/>
+				<box leftPadding="3" rightPadding="3">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Material]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="26" y="0" width="149" height="20" isPrintWhenDetailOverflows="true" uuid="d5d1e47b-5154-4fd2-bf63-711875543d12"/>
+				<box leftPadding="3" rightPadding="3">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pieza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="464" y="0" width="120" height="20" uuid="140e5ee8-8d7d-4aa5-b2b0-9d261310a51a"/>
+				<box leftPadding="3" rightPadding="3">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Medidas]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16">
+			<textField>
+				<reportElement x="0" y="0" width="26" height="16" uuid="e74de4ed-274e-42fa-a8e2-0d3b5f0a5a05"/>
+				<box leftPadding="0">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{materialusadonuevo_cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="26" y="0" width="149" height="16" uuid="619b393a-c8f5-46ce-8dc9-6801f74ab486"/>
+				<box leftPadding="4">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{materialusadonuevo_pieza}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="285" y="0" width="179" height="16" isPrintWhenDetailOverflows="true" uuid="9b987163-4d83-4010-8898-1b8d5a4ef38d"/>
+				<box leftPadding="4">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{materialusadonuevo_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="464" y="0" width="35" height="16" uuid="ea3d04ee-48fa-4ad1-8575-c5af68e3c6ef"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{materialusadonuevo_medX}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="499" y="0" width="9" height="16" isPrintWhenDetailOverflows="true" uuid="e0ee0640-5dce-4f1a-b742-d926f35171a2"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[X]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="508" y="0" width="35" height="16" uuid="91c0c00f-d2e7-4736-9b45-b4eb408fda96"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{materialusadonuevo_medY}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="543" y="0" width="9" height="16" isPrintWhenDetailOverflows="true" uuid="8e606a85-4ea3-45cf-85a9-37d5ea983749"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[X]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="552" y="0" width="32" height="16" uuid="e358fa73-c818-424f-9c7a-7ac2a3152f6c"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{materialusadonuevo_medZ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="0" width="110" height="16" uuid="e1ac5d17-679c-4377-bd9c-03ef9e29f82d"/>
+				<box leftPadding="4">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{materialusadonuevo_idMaterial}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

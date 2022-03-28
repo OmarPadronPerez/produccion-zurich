@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b68e4ddf-329e-4ac1-aff1-c2eb7c2d6c18">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="364"/>
+	<property name="ireport.y" value="0"/>
+	<style name="fondo" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{almacen_minimo}>$F{almacen_existencias}]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FF3333"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{almacen_minimo}<$F{almacen_existencias}]]></conditionExpression>
+			<style/>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[SELECT
+     almacen.`id` AS almacen_id,
+     almacen.`nombre` AS almacen_nombre,
+     almacen.`tipo` AS almacen_tipo,
+     almacen.`precio` AS almacen_precio,
+     almacen.`actualizacion` AS almacen_actualizacion,
+     almacen.`existencias` AS almacen_existencias,
+     almacen.`medX` AS almacen_medX,
+     almacen.`medY` AS almacen_medY,
+     almacen.`paquete` AS almacen_paquete,
+     almacen.`visible` AS almacen_visible,
+     almacen.`minimo` AS almacen_minimo
+FROM
+     `almacen` almacen
+ORDER BY
+     tipo ASC,
+     nombre ASC]]>
+	</queryString>
+	<field name="almacen_id" class="java.lang.Integer"/>
+	<field name="almacen_nombre" class="java.lang.String"/>
+	<field name="almacen_tipo" class="java.lang.String"/>
+	<field name="almacen_precio" class="java.math.BigDecimal"/>
+	<field name="almacen_actualizacion" class="java.sql.Date"/>
+	<field name="almacen_existencias" class="java.math.BigDecimal"/>
+	<field name="almacen_medX" class="java.math.BigDecimal"/>
+	<field name="almacen_medY" class="java.math.BigDecimal"/>
+	<field name="almacen_paquete" class="java.math.BigDecimal"/>
+	<field name="almacen_visible" class="java.lang.Integer"/>
+	<field name="almacen_minimo" class="java.math.BigDecimal"/>
+	<group name="almacen_tipo">
+		<groupExpression><![CDATA[$F{almacen_tipo}]]></groupExpression>
+		<groupHeader>
+			<band height="32">
+				<rectangle>
+					<reportElement x="0" y="0" width="572" height="5" backcolor="#000000" uuid="cfe2135e-855c-4aa8-9d32-ad8db6eb341d"/>
+				</rectangle>
+				<textField>
+					<reportElement x="1" y="5" width="571" height="22" forecolor="#000000" uuid="d8480c32-7933-44bc-8ff8-cf6d77809e2c"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{almacen_tipo}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement x="0" y="27" width="572" height="5" backcolor="#000000" uuid="154a4415-a8b5-42f6-ab1e-0128bf78b04c"/>
+				</rectangle>
+				<line>
+					<reportElement x="572" y="0" width="1" height="32" uuid="f92dfe76-f327-4a34-9a08-695e0e0b3469"/>
+				</line>
+				<line>
+					<reportElement x="0" y="0" width="1" height="32" uuid="fabbbae9-7fc5-47aa-b345-adf22bcc16f6"/>
+				</line>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="188" y="0" width="292" height="25" uuid="a10bc038-1e05-4ffd-b6f9-9b650f4e586a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ZURICH MUEBLERIA SA. DE CV.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="188" y="25" width="292" height="24" uuid="4ae89c46-eda6-4157-8434-57e3d7883cab"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE INVENTARIO]]></text>
+			</staticText>
+			<image>
+				<reportElement x="1" y="0" width="187" height="79" uuid="89497c37-9b5a-480e-8e47-5a840365e550"/>
+				<imageExpression><![CDATA["archivos\\imagenes\\LOGO.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="36">
+			<rectangle>
+				<reportElement x="0" y="0" width="572" height="36" forecolor="#FFFFFF" backcolor="#999999" uuid="498ad8e7-3722-44be-83cd-057ba07f4ca8"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="33" height="36" forecolor="#FFFFFF" uuid="8774bd1f-b6e9-4604-a4e4-ac113c168ba9"/>
+				<box leftPadding="3" rightPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="0" width="220" height="36" forecolor="#FFFFFF" uuid="faa7431a-cda5-4e55-94db-2f4f123550c1"/>
+				<box leftPadding="3" rightPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="433" y="0" width="63" height="36" forecolor="#FFFFFF" uuid="fb1866c0-1c4f-4b8e-aa21-5124dc219cc8"/>
+				<box leftPadding="3" rightPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Existencias en sistema]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="496" y="0" width="76" height="36" forecolor="#FFFFFF" uuid="83870311-7cfa-4fa1-9c73-31ef5266c3dc"/>
+				<box leftPadding="3" rightPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Existencias reales]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="253" y="0" width="55" height="36" forecolor="#FFFFFF" uuid="08603aa5-121e-4126-aecb-35ecf10723ab"/>
+				<box leftPadding="3" rightPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="308" y="0" width="71" height="36" forecolor="#FFFFFF" uuid="87a21272-08ec-446a-b3da-f100e55a63be"/>
+				<box leftPadding="3" rightPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Actualización de precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="379" y="0" width="54" height="36" forecolor="#FFFFFF" uuid="c6bd84fa-1b4b-4fbb-bf5b-864b59fd9d7f"/>
+				<box leftPadding="3" rightPadding="3">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="0.25" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="0.25" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="0.25" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Minimo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<rectangle>
+				<reportElement style="fondo" stretchType="RelativeToBandHeight" x="0" y="0" width="572" height="22" uuid="491db6c6-c93a-4dcf-9dea-2078d908efc3"/>
+			</rectangle>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="33" height="22" uuid="ab86e419-c529-496a-9708-f1b49140438b"/>
+				<box leftPadding="3" rightPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{almacen_id}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="fondo" stretchType="RelativeToTallestObject" x="33" y="0" width="220" height="22" uuid="67d0b70d-1f26-4da4-a994-83378eb4649d"/>
+				<box leftPadding="3" rightPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{almacen_nombre}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="433" y="0" width="63" height="22" uuid="53f803ca-dab3-4f67-bd8d-8ff3829cfaa3"/>
+				<box rightPadding="3">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{almacen_existencias}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="496" y="0" width="76" height="22" uuid="f8cf238f-ccb0-41da-ab4f-d113d2fe4227"/>
+			</rectangle>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="253" y="0" width="55" height="22" uuid="aad8c224-f13e-44d2-b299-3b340a878c07"/>
+				<box leftPadding="5" rightPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{almacen_precio}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
+				<reportElement stretchType="RelativeToTallestObject" x="308" y="0" width="71" height="22" uuid="bdffec60-1d9e-4c8f-9dbf-14b217617d08"/>
+				<box leftPadding="5" rightPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{almacen_actualizacion}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="379" y="0" width="54" height="22" uuid="10041b5f-9c97-413e-b9ce-547fbc935061"/>
+				<box rightPadding="3">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{almacen_minimo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="452" y="0" width="80" height="20" uuid="2d4de6fb-c3e6-401d-9a70-d8fa034db1de"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="532" y="0" width="40" height="20" uuid="5b792f8a-e1b2-44a8-a15e-58888eacb716"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="0" y="0" width="100" height="20" uuid="e08edf2f-9260-45a6-8bc2-45a04ee7af05"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
